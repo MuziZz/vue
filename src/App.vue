@@ -8,6 +8,7 @@
     </child-component>
     <button @click="click1()">button1</button>
     <button @click="click2()">button2</button>
+    <axiosTest></axiosTest>
     <router-view/>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
       console.log(' XXXX ')
     },
     timer () {
-      setInterval(this.log, 100)
+      // setInterval(this.log, 100)
     }
   },
   mounted () {
