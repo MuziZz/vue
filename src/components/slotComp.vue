@@ -1,10 +1,14 @@
 <template>
-    <div>sss</div>
+  <div>
+    <h3>{{post.title}}</h3>
+  </div>
 </template>
 <script>
-// import Vue from 'vue'
 export default {
-  // components:[]
-}
-
+  name: "slotComp",
+  props: ["post"],
+  data() {
+    return {};
+  }
+};
 </script>

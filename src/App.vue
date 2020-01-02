@@ -1,51 +1,59 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <child-component>
-      <template slot="girl">
-        漂亮，美丽，购物，逛街
-      </template>
-    </child-component>
-    <button @click="click1()">button1</button>
-    <button @click="click2()">button2</button>
-    <axiosTest></axiosTest>
-    <router-view/>
+    <img src="./assets/logo.png" />
+    <!-- <axiosTest></axiosTest> -->
+    <!-- <slotComp></slotComp> -->
+    <!-- <secondPage></secondPage> -->
+    <!-- <firstCompont></firstCompont> -->
+    <!-- <slotComp v-for="post in posts" v-bind="post"></slotComp> -->
+
+    <!-- 父组件向子组件传值 -->
+    <slotComp v-for="post in posts" v-bind:post="post" v-bind:key="post.id"></slotComp>
+    <baseCheckbox v-model="loveValue"></baseCheckbox>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
+import Vue from "vue";
+import secondPage from "@/components/secondPage";
+import axiosTest from "@/components/axiosTest";
+import firstCompont from "@/components/firstCompont";
+import slotComp from "@/components/slotComp";
+import baseCheckbox from "@/components/baseCheckbox";
+
 export default {
-  name: 'App',
-  methods: {
-    click1 () {
-      this.$route.push('/page1')
-    },
-    click2 () {
-      this.$route.push('/page2')
-    },
-    log () {
-      console.log(' XXXX ')
-    },
-    timer () {
-      // setInterval(this.log, 100)
-    }
+  name: "App",
+  components: {
+    secondPage,
+    axiosTest,
+    firstCompont,
+    slotComp,
+    baseCheckbox
   },
-  mounted () {
-    this.timer()
-  }
-}
-// Vue.component('child-component', {
-//   template: '<div>hello world!<slot></slot></div>'
-// })
-Vue.component('child-component', {
-  template: '<div><h4>这个世界上不仅有男人和女人，还有动物</h4><slot name="girl"></slot></div>'
-})
+  data() {
+    return {
+      title: "sss",
+      posts: [
+        {
+          id: 1,
+          title: "aaa"
+        },
+        {
+          id: 2,
+          title: "bbb"
+        }
+      ]
+    };
+  },
+  methods: {},
+  mounted() {}
+};
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
