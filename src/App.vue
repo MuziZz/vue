@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png" />
+    <h1>{{titleStr}}</h1>
     <!-- <axiosTest></axiosTest> -->
     <!-- <slotComp></slotComp> -->
     <!-- <secondPage></secondPage> -->
@@ -8,8 +9,9 @@
     <!-- <slotComp v-for="post in posts" v-bind="post"></slotComp> -->
 
     <!-- 父组件向子组件传值 -->
-    <slotComp v-for="post in posts" v-bind:post="post" v-bind:key="post.id"></slotComp>
-    <baseCheckbox v-model="loveValue"></baseCheckbox>
+    <!-- <slotComp v-for="post in posts" v-bind:post="post" v-bind:key="post.id"></slotComp>
+    <baseCheckbox v-model="loveValue"></baseCheckbox> -->
+    <set-compont></set-compont>
     <router-view />
   </div>
 </template>
@@ -21,7 +23,7 @@ import axiosTest from "@/components/axiosTest";
 import firstCompont from "@/components/firstCompont";
 import slotComp from "@/components/slotComp";
 import baseCheckbox from "@/components/baseCheckbox";
-
+import setCompont from '@/components/setCompont';
 export default {
   name: "App",
   components: {
@@ -29,11 +31,12 @@ export default {
     axiosTest,
     firstCompont,
     slotComp,
-    baseCheckbox
+    baseCheckbox,
+    setCompont
   },
   data() {
     return {
-      title: "sss",
+      titleStr: "sss",
       posts: [
         {
           id: 1,
@@ -47,7 +50,9 @@ export default {
     };
   },
   methods: {},
-  mounted() {}
+  mounted() {
+    console.log(Vue)
+  }
 };
 </script>
 
